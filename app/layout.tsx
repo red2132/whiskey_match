@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./components/Header";
-import { ThemeProvider } from "./config/material-tailwind-theme-provider";
-import WhiskeyDetail from "./components/WhiskeyDetail";
-import Footer from "./components/Footer";
+import { ThemeProvider } from "../config/material-tailwind-theme-provider";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "whiskey match",
@@ -33,7 +32,6 @@ export default function RootLayout({
       <ThemeProvider>
         <body>
           <Header />
-          <WhiskeyDetail />
           {children}
           <Footer />
         </body>

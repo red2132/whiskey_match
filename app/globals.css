@@ -5,3 +5,36 @@
 body {
   font-family: "Pretendard", sans-serif;
 }
+
+@layer components {
+  .default-button-sm {
+    @apply rounded-lg h-12 w-24 bg-primary_color border-none;
+  }
+  .default-button-lg {
+    @apply rounded-lg h-12 w-52 bg-primary_color border-none;
+  }
+  .default-button-xl {
+    @apply rounded-lg h-12 w-52 bg-primary_color border-none;
+  }
+  .outline-button-sm {
+    @apply rounded-lg h-12 w-24 bg-white border-2 border-primary_color border-solid;
+  }
+  .outline-button-lg {
+    @apply rounded-lg h-12 w-52 bg-white border-2 border-primary_color border-solid;
+  }
+  .outline-button-xl {
+    @apply rounded-lg h-12 w-80 bg-white border-2 border-primary_color border-solid;
+  }
+  .delete-button-sm {
+    @apply rounded-lg h-12 w-24 bg-delete_color border-none;
+  }
+  .delete-button-lg {
+    @apply rounded-lg h-12 w-52 bg-delete_color border-none;
+  }
+  .main-text {
+    @apply text-primary_color text-2xl font-semibold;
+  }
+  .button-text {
+    @apply text-point_color text-lg text-center;
+  }
+}

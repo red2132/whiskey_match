@@ -1,0 +1,12 @@
+{
+  "whiskey_id": "001",
+  "whiskey_type": "싱글몰트 위스키",
+  "whiskey_volume": "700ml",
+  "whiskey_abv": "43%",
+  "whiskey_nation": "스코틀랜드",
+  "whiskey_aroma": "토피, 바닐라, 과일",
+  "whiskey_taste": "바닐라, 오크, 과일",
+  "whiskey_finish": "부드러운, 따뜻한",
+  "whiskey_thumbnail_image": "https://dailyshot.co/m/_next/image?url=https%3A%2F%2Fd1e2y5wc27crnp.cloudfront.net%2Fmedia%2Fsmartorder_reservation%2Fproduct%2Fthumbnail%2F0ae4c91f-49d6-48ae-9d3a-b670c81de90c.webp&w=640&q=85",
+  "whiskey_bg_image": "https://d1e2y5wc27crnp.cloudfront.net/media/smartorder_reservation/product_detail/ce59a005-3eba-4488-aca8-106a1e37e703.webp"
+}

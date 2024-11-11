@@ -8,8 +8,15 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {},
-  plugins: [require("@tailwindcss/typography")],
+  theme: {
+    extend: {
+      colors: {
+        primary_color: "#808080",
+        point_color: "#D2B48C",
+        delete_color: "#8B0000",
+      },
+    },
+  },
 };
 
 export default withMT(config);

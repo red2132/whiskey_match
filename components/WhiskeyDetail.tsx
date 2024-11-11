@@ -1,14 +1,16 @@
-export default function WhiskeyDetail(): React.ReactNode {
+import dummyWhiskey from "@/dummy/dummyWhiskey.json";
+
+export default function WhiskeyDetail(): JSX.Element {
   return (
     <div className="h-screen w-screen">
       <div className={"h-4/5 w-1/2 relative"}>
         <img
           className="w-full h-full object-cover brightness-50"
-          src="images/dumi/whiskey_image2.png"
+          src={dummyWhiskey.whiskey_bg_image}
         />
         <img
           className="rounded-[5px] w-[40%] h-[50%] absolute right-[7%] top-[37%] object-fill"
-          src="images/dumi/whiskey_image1.png"
+          src={dummyWhiskey.whiskey_thumbnail_image}
         />
         <div className="text-[#ffffff] lg:text-4xl md:text-2xl font-semibold absolute left-[5%] top-[14%]">
           발베니 14년 캐리비안 캐스크
