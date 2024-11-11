@@ -14,7 +14,7 @@ body {
     @apply rounded-lg h-12 w-52 bg-primary_color border-none;
   }
   .default-button-xl {
-    @apply rounded-lg h-12 w-52 bg-primary_color border-none;
+    @apply rounded-lg h-12 w-80 bg-primary_color border-none;
   }
   .outline-button-sm {
     @apply rounded-lg h-12 w-24 bg-white border-2 border-primary_color border-solid;

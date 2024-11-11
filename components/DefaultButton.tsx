@@ -4,7 +4,7 @@ import React from "react";
 
 export default function DefaultButton({
   children,
-  className = "default-button-sm",
+  className = "default-button-sm ",
   onClick = () => {},
 }: {
   children: string | JSX.Element;
