@@ -32,7 +32,7 @@ body {
     @apply rounded-lg h-12 w-52 bg-delete_color border-none;
   }
   .main-text {
-    @apply text-primary_color text-2xl font-semibold;
+    @apply text-primary_color text-3xl font-bold;
   }
   .button-text {
     @apply text-point_color text-lg text-center;

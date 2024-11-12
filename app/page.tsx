@@ -1,5 +1,7 @@
+"use client";
 import Header from "@/components/Header";
 import WhiskeyItemList from "@/components/item/ItemList";
+import StarInput from "@/components/star/StarInput";
 import Image from "next/image";
 
 export default function Home() {
