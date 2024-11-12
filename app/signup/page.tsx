@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function SignupPage(): JSX.Element {
   return (
     <div className="flex flex-row justify-center">
-      <div className="my-20 w-full max-w-md h-auto md:w-[450px] md:h-[600px] rounded-sm shadow flex flex-col items-center p-6 md:p-0">
+      <div className="my-20 w-80 h-auto md:w-[450px] md:h-[600px] rounded-sm shadow flex flex-col items-center p-6 md:p-0">
         <div className="w-full md:h-5/6 grid gap-6 md:gap-12 content-center">
           <div className="flex justify-center">
             <Image
@@ -28,10 +28,10 @@ export default function SignupPage(): JSX.Element {
             />
           </div>
           <div className="flex flex-row gap-4 mt-4 justify-center">
-            <DefaultButton className="default-button-sm">
+            <DefaultButton className="default-button-sm-signup">
               가입하기
             </DefaultButton>
-            <DefaultButton className="outline-button-sm">
+            <DefaultButton className="outline-button-sm-signup">
               <Link href={`/`}>홈으로</Link>
             </DefaultButton>
           </div>

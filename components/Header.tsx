@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Header(): JSX.Element {
   return (
     <header className="mt-4 mx-5 flex flex-col gap-4 items-center">
-      <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start">
+      <div className="w-full flex flex-col gap-3 md:flex-row justify-between items-center md:items-start">
         <Link href="/">
           <Image
             src="/images/whiskey_logo.png"
@@ -28,12 +28,14 @@ export default function Header(): JSX.Element {
               </Link>
             </button>
           </div>
-          <div className="h-7 text-center flex justify-center items-end">
-            홍길동 님
+          <div className="flex flex-row gap-3 items-center">
+            <div className="h-7 text-center flex justify-center items-end">
+              홍길동 님
+            </div>
+            <DefaultButton>
+              <Link href="/login">Login</Link>
+            </DefaultButton>
           </div>
-          <DefaultButton>
-            <Link href="/login">Login</Link>
-          </DefaultButton>
         </div>
       </div>
       <div className="w-full border-t border-gray-400 mb-6"></div>

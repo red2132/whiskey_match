@@ -1,5 +1,6 @@
 import DefaultButton from "@/components/DefaultButton";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function NotFound(): JSX.Element {
   return (
@@ -9,8 +10,11 @@ export default function NotFound(): JSX.Element {
         alt="404 페이지 안내 이미지"
         height={400}
         width={1100}
+        priority
       />
-      <DefaultButton className="default-button-lg">이전 페이지로</DefaultButton>
+      <DefaultButton className="default-button-lg">
+        <Link href={`/`}>홈으로</Link>
+      </DefaultButton>
     </div>
   );
 }
