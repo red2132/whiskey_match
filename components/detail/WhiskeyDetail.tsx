@@ -5,7 +5,7 @@ export default function WhiskeyDetail(): JSX.Element {
   return (
     <div className="w-full relative">
       <Image
-        className="!w-full h-80 md:h-[540px] lg:h-[720px] brightness-50 object-fill"
+        className="w-full h-80 sm:h-[540px] lg:h-[720px] brightness-50 object-fill"
         src={dummyWhiskey.whiskey_bg_image}
         alt="위스키 배경 이미지"
         height={720}

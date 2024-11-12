@@ -5,8 +5,8 @@ import Link from "next/link";
 export default function Modal() {
   return (
     <div className="flex justify-center items-center">
-      <div className="relative lg:w-3/5 md:w-11/12 h-fit bg-[#fbfbfb] flex flex-col gap-7 justify-center items-center ">
-        <button className="absolute right-4 top-4 h-8 w-8 rounded-full bg-black text-white hover:text-gray-600 opacity-75 z-10">
+      <div className="relative w-11/12 xl:w-2/5 bg-[#fbfbfb] flex flex-col gap-7 justify-center items-center ">
+        <button className="absolute right-2 top-2 h-8 w-8 rounded-full bg-black text-white hover:text-gray-600 opacity-75 z-10">
           <Link href={"/"}>
             <i className="fas fa-x"></i>
           </Link>
