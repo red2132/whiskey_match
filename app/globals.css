@@ -14,7 +14,7 @@ body {
     @apply rounded-lg h-12 w-24 bg-white border sm:border-2 border-primary_color border-solid;
   }
   .default-button-sm {
-    @apply rounded-lg h-8 w-20 sm:h-12 sm:w-24 bg-primary_color border-none;
+    @apply rounded-lg h-8 w-20 md:h-12 md:w-24 bg-primary_color border-none;
   }
   .default-button-lg {
     @apply rounded-lg h-12 w-52 bg-primary_color border-none;
@@ -23,7 +23,7 @@ body {
     @apply rounded-lg h-12 w-80 bg-primary_color border-none;
   }
   .outline-button-sm {
-    @apply rounded-lg h-8 w-20 sm:h-12 sm:w-24 bg-white border sm:border-2 border-primary_color border-solid;
+    @apply rounded-lg h-8 w-20 md:h-12 md:w-24 bg-white border sm:border-2 border-primary_color border-solid;
   }
   .outline-button-lg {
     @apply rounded-lg h-12 w-52 bg-white border sm:border-2 border-primary_color border-solid;
@@ -38,9 +38,9 @@ body {
     @apply rounded-lg h-12 w-52 bg-delete_color border-none;
   }
   .main-text {
-    @apply text-primary_color text-xl sm:text-3xl font-bold;
+    @apply text-primary_color text-xl md:text-3xl font-bold;
   }
   .button-text {
-    @apply text-point_color text-sm sm:text-lg text-center;
+    @apply text-point_color text-sm md:text-lg text-center;
   }
 }

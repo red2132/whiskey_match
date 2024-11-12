@@ -44,7 +44,7 @@ function StarRating({ id, rating }: StarRatingProps) {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6 lg:w-14 lg:h-14 md:w-10 md:h-10"
+              className="w-6 h-6 md:w-14 md:h-14"
               viewBox={`0 0 ${START_WIDTH_SIZE} 13`} // 너비 및 높이 설정
               fill={EMPTY_STAR_COLOR} // 빈별 색상
             >

@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function LoginPage(): JSX.Element {
   return (
     <div className="flex flex-row justify-center">
-      <div className="my-20 w-80 h-auto md:w-[450px] md:h-[600px] rounded-sm shadow flex flex-col items-center p-6 md:p-0">
+      <div className="my-20 w-80 h-auto md:w-[450px] md:h-[600px] rounded-sm shadow-xl flex flex-col items-center p-6 md:p-0">
         <div className="w-full md:h-4/5 grid gap-6 md:gap-12 content-center">
           <div className="flex justify-center">
             <Image
