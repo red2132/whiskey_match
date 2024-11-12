@@ -11,26 +11,24 @@ export default function WhiskeyDetail(): JSX.Element {
         className="rounded-[5px] w-[40%] h-[50%] absolute right-[7%] top-[37%] object-fill"
         src={dummyWhiskey.whiskey_thumbnail_image}
       />
-      <div className="text-[#ffffff] lg:text-4xl md:text-2xl font-semibold absolute left-[5%] top-[14%]">
-        발베니 14년 캐리비안 캐스크
-        <br />
-        에디션{" "}
+      <div className="text-[#ffffff] text-4xl font-semibold absolute left-[5%] top-[14%]">
+        {dummyWhiskey.whiskey_name}
       </div>
-      <div className="text-[#ffffff] text-left lg:text-2xl md:text-lg absolute left-[5%] top-[37%] flex items-center justify-start">
-        종류: 싱글몰트 위스키
+      <div className="text-[#ffffff] text-left text-2xl absolute left-[5%] top-[37%] flex items-center justify-start">
+        종류: {dummyWhiskey.whiskey_type}
         <br />
-        용량: 700ml
+        용량: {dummyWhiskey.whiskey_volume}
         <br />
-        도수: 43%
+        도수: {dummyWhiskey.whiskey_abv}
         <br />
-        국가: 스코틀랜드{" "}
+        국가: {dummyWhiskey.whiskey_nation}
       </div>
-      <div className="text-[#ffffff] text-left lg:text-2xl md:text-sm absolute left-[5%] top-[70%] flex items-center justify-start">
-        Aroma: 토피, 바닐라, 과일
+      <div className="text-[#ffffff] text-left text-2xl absolute left-[5%] top-[70%] flex items-center justify-start">
+        Aroma: {dummyWhiskey.whiskey_aroma}
         <br />
-        taste: 바닐라, 오크, 과일
+        taste: {dummyWhiskey.whiskey_taste}
         <br />
-        Finish: 부드러운, 따뜻한{" "}
+        Finish: {dummyWhiskey.whiskey_finish}
       </div>
     </div>
   );

@@ -39,12 +39,12 @@ function StarRating({ id, rating }: StarRatingProps) {
         const itemKey = `${id}${item}`;
         return (
           <span
-            className="inline-flex lg:mr-3 md:mr-1 last:mr-0"
+            className="inline-flex mr-3 last:mr-0"
             key={`${itemKey}_${idx}`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="lg:w-14 lg:h-14 md:w-8 md:h-8"
+              className="w-14 h-14"
               viewBox={`0 0 ${START_WIDTH_SIZE} 13`} // 너비 및 높이 설정
               fill={EMPTY_STAR_COLOR} // 빈별 색상
             >

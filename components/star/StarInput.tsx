@@ -1,9 +1,7 @@
+"use client";
+
 import { ChangeEvent, useState } from "react";
 import StarRating from "./StarRating";
-
-interface Props {
-  id: number;
-}
 
 function StarInput({ id }: { id: number }) {
   const [rating, setRating] = useState<number>(0);

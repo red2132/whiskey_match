@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Header(): JSX.Element {
   return (
     <header className="mt-4 mx-5 flex flex-col gap-4 items-center">
-      <div className="w-full flex flex-row justify-between">
+      <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start">
         <Link href="/">
           <Image
             src="/images/whiskey_logo.png"
@@ -16,10 +16,10 @@ export default function Header(): JSX.Element {
           />
         </Link>
 
-        <div className="flex w- flex-row items-center gap-2 px-5">
-          <div className="h-10 px-4 py-3 bg-white rounded-full border border-[#d9d9d9] justify-start items-center gap-2 flex">
+        <div className="flex w-full md:w-auto flex-col md:flex-row items-center gap-4 md:gap-2 px-5">
+          <div className="w-full md:w-auto h-10 flex items-center px-4 py-3 bg-white rounded-full border border-[#d9d9d9] gap-2">
             <input
-              className="grow shrink basis-0 text-[#b3b3b3] text-base font-normal leading-none"
+              className="w-full grow shrink basis-0 text-[#b3b3b3] text-base font-normal leading-none"
               placeholder="위스키를 검색해 보세요!"
             />
             <button>
@@ -28,8 +28,7 @@ export default function Header(): JSX.Element {
               </Link>
             </button>
           </div>
-          <div className="w-24 h-7 text-center flex justify-center items-end">
-            {" "}
+          <div className="h-7 text-center flex justify-center items-end">
             홍길동 님
           </div>
           <DefaultButton>
