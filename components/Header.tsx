@@ -12,11 +12,11 @@ export default function Header(): JSX.Element {
             alt="위스키매치 사이트 로고"
             width={270}
             height={40}
-            className="h-10 w-auto object-cover"
+            className="!h-10 !w-auto object-cover"
           />
         </Link>
 
-        <div className="flex flex-row items-center gap-2 px-5">
+        <div className="flex w- flex-row items-center gap-2 px-5">
           <div className="h-10 px-4 py-3 bg-white rounded-full border border-[#d9d9d9] justify-start items-center gap-2 flex">
             <input
               className="grow shrink basis-0 text-[#b3b3b3] text-base font-normal leading-none"

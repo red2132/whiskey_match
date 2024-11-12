@@ -14,7 +14,7 @@ export default function Modal() {
   if (!isVisible) return null;
   return (
     <div className="min-h-screen flex justify-center items-center">
-      <div className="relative w-1/2 h-fit bg-[#fbfbfb] flex flex-col gap-7 justify-center items-center ">
+      <div className="relative lg:w-1/2 md:w-11/12 h-fit bg-[#fbfbfb] flex flex-col gap-7 justify-center items-center ">
         {/* 닫기 버튼 */}
         <button
           onClick={handleClose}
