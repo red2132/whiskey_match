@@ -1,8 +1,32 @@
+"use client";
+
 import Image from "next/image";
 import DefaultButton from "./DefaultButton";
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Header(): JSX.Element {
+  const [search, setSearch] = useState(""); // 검색어
+  const router = useRouter(); // 라우터
+
+  // 검색어 세팅
+  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  // keyup 이벤트
+  const keyupEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      router.push(`/search?q=${search}`);
+    }
+  };
+
+  // 검색 아이콘 클릭 시 이동
+  const onSubmit = () => {
+    router.push(`/search?q=${search}`);
+  };
+
   return (
     <header className="mt-4 mx-5 flex flex-col gap-4 items-center">
       <div className="w-full flex flex-col gap-3 md:flex-row justify-between items-center md:items-start">
@@ -21,11 +45,11 @@ export default function Header(): JSX.Element {
             <input
               className="w-full grow shrink basis-0 text-[#b3b3b3] text-base font-normal leading-none"
               placeholder="위스키를 검색해 보세요!"
+              onChange={onChangeSearch}
+              onKeyUp={keyupEnter}
             />
-            <button>
-              <Link href="/search">
-                <i className="fas fa-search" />
-              </Link>
+            <button onClick={onSubmit}>
+              <i className="fas fa-search" />
             </button>
           </div>
           <div className="flex flex-row gap-3 items-center">

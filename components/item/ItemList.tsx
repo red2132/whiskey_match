@@ -1,14 +1,19 @@
+import type { WhiskeyOverview } from "@/types";
 import WhiskeyItem from "./Item";
-import dummyWhiskeyList from "@/dummy/dummyWhiskeyList.json";
 
-export default function WhiskeyItemList(): JSX.Element {
+export default function WhiskeyItemList({
+  whiskies,
+}: {
+  whiskies: WhiskeyOverview[] | null;
+}): JSX.Element {
   return (
     <div className="w-fit grid lg:grid-cols-4 md:grid-cols-3 gap-16 mx-auto justify-center">
-      {dummyWhiskeyList.map((whiskeyInfo, index) => (
+      {whiskies?.map((whiskey) => (
         <WhiskeyItem
-          key={index}
-          whiskeyName={whiskeyInfo.whiskey_name}
-          whiskeyThumbnailImage={whiskeyInfo.whiskey_thumbnail_image}
+          key={whiskey.whiskeyId}
+          whiskeyId={whiskey.whiskeyId}
+          whiskeyName={whiskey.whiskeyName}
+          whiskeyThumbnailImage={whiskey.whiskeyThumbnailImage}
         />
       ))}
     </div>

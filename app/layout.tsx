@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "../config/material-tailwind-theme-provider";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "whiskey match",
-  description: "위스키 안주 궁합 별점 사이트",
+  description: "whiskey match 위스키 상세 페이지",
 };
 
 export default function RootLayout({
@@ -30,10 +28,7 @@ export default function RootLayout({
         />
       </head>
       <ThemeProvider>
-        <body>
-          {children}
-          <Footer />
-        </body>
+        <body>{children}</body>
       </ThemeProvider>
     </html>
   );

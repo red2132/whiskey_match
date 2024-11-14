@@ -1,0 +1,42 @@
+[
+  {
+    "whiskeyId": "001",
+    "whiskeyName": "발베니 캐리비안 캐스크 14년",
+    "whiskeyThumbnailImage": "https://dailyshot.co/m/_next/image?url=https%3A%2F%2Fd1e2y5wc27crnp.cloudfront.net%2Fmedia%2Fsmartorder_reservation%2Fproduct%2Fthumbnail%2F0ae4c91f-49d6-48ae-9d3a-b670c81de90c.webp&w=256&q=85"
+  },
+  {
+    "whiskeyId": "002",
+    "whiskeyName": "맥캘란 15년 더블 캐스크",
+    "whiskeyThumbnailImage": "https://dailyshot.co/m/_next/image?url=https%3A%2F%2Fd1e2y5wc27crnp.cloudfront.net%2Fmedia%2Fsmartorder_reservation%2Fproduct%2Fthumbnail%2F0bb5c69d-bbfb-4475-a894-1cb98d81795b.webp&w=256&q=85"
+  },
+  {
+    "whiskeyId": "003",
+    "whiskeyName": "글렌피딕 12년 셰리 캐스크 피니시",
+    "whiskeyThumbnailImage": "https://dailyshot.co/m/_next/image?url=https%3A%2F%2Fd1e2y5wc27crnp.cloudfront.net%2Fmedia%2Fcore%2Fproduct%2Fthumbnail%2F37a40c6a-0600-4e3b-8308-ea81a4e96764.webp&w=256&q=85"
+  },
+  {
+    "whiskeyId": "004",
+    "whiskeyName": "글렌피딕 12년(구형)",
+    "whiskeyThumbnailImage": "https://dailyshot.co/m/_next/image?url=https%3A%2F%2Fd1e2y5wc27crnp.cloudfront.net%2Fmedia%2Fcore%2Fproduct%2Fthumbnail%2F1806b8b2-3f4a-473a-accd-3b325317ced5.webp&w=256&q=85"
+  },
+  {
+    "whiskeyId": "005",
+    "whiskeyName": "조니워커 더블 블랙",
+    "whiskeyThumbnailImage": "https://dailyshot.co//m/_next/image?url=https%3A%2F%2Fd1e2y5wc27crnp.cloudfront.net%2Fmedia%2Fcore%2Fproduct%2Fthumbnail%2F62ef4b65-e4f6-47f0-aa14-8150377f2ac4.webp&w=256&q=85"
+  },
+  {
+    "whiskeyId": "006",
+    "whiskeyName": "발렌타인 17년(신형)",
+    "whiskeyThumbnailImage": "https://dailyshot.co/m/_next/image?url=https%3A%2F%2Fd1e2y5wc27crnp.cloudfront.net%2Fmedia%2Fsmartorder_reservation%2Fproduct%2Fthumbnail%2F20a98036-7dd8-42b9-9626-5b6f6e9380aa.webp&w=256&q=85"
+  },
+  {
+    "whiskeyId": "007",
+    "whiskeyName": "와일드 터키 101 8년",
+    "whiskeyThumbnailImage": "https://dailyshot.co/m/_next/image?url=https%3A%2F%2Fd1e2y5wc27crnp.cloudfront.net%2Fmedia%2Fcore%2Fproduct%2Fthumbnail%2F38223573-c99b-48b6-bd21-62222721fa6c.webp&w=256&q=85"
+  },
+  {
+    "whiskeyId": "008",
+    "whiskeyName": "탈리스커 10년",
+    "whiskeyThumbnailImage": "https://dailyshot.co/m/_next/image?url=https%3A%2F%2Fd1e2y5wc27crnp.cloudfront.net%2Fmedia%2Fsmartorder_reservation%2Fproduct%2Fthumbnail%2F9e4237c3-a458-4f6c-89bf-1d550d7e0366.webp&w=256&q=85"
+  }
+]

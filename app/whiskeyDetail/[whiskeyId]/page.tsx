@@ -2,7 +2,12 @@ import RatingDetail from "@/components/detail/RatingDetail";
 import WhiskeyDetail from "@/components/detail/WhiskeyDetail";
 import Link from "next/link";
 
-export default function Modal() {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ whiskeyId: string }>;
+}): Promise<JSX.Element> {
+  const { whiskeyId } = await params;
   return (
     <div className="flex justify-center items-center">
       <div className="relative w-80 md:w-[720px] bg-[#fbfbfb] flex flex-col gap-7 justify-center items-center ">
@@ -12,7 +17,7 @@ export default function Modal() {
           </Link>
         </button>
 
-        <WhiskeyDetail />
+        <WhiskeyDetail whiskeyId={whiskeyId} />
         <RatingDetail />
       </div>
     </div>
