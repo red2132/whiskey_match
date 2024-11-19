@@ -7,7 +7,7 @@ import { createServerSupabaseClient } from "@/utils/supabase/server";
 /** 평균 점수 검색 */
 export async function getAverageRatingsByWhiskeyId(
   whiskey_id: string
-): Promise<{ avgRating: Ratings; ratingCount: number }> {
+): Promise<{ avgRating: Ratings; ratingCount: number } | null> {
   const supabase = await createServerSupabaseClient();
 
   const { data, error } = await supabase
@@ -23,8 +23,11 @@ export async function getAverageRatingsByWhiskeyId(
     );
     throw new Error("Failed to fetch average ratings by whiskey ID");
   }
-  const avgRating = await calculateAverage(data);
-  return { avgRating: avgRating, ratingCount: data.length };
+  if (data.length > 0) {
+    const avgRating = await calculateAverage(data);
+    return { avgRating: avgRating, ratingCount: data.length };
+  }
+  return null;
 }
 
 export async function IsMemberRating(

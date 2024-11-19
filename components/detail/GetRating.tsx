@@ -29,6 +29,15 @@ export default function GetRating({
   if (isLoading) {
     return <h1 className="main-text m-10">로딩중...</h1>;
   }
+  if (!avgRating) {
+    return (
+      <div className="w-[605px] h-[207px] bg-[#f0f0f0] rounded-[10px] m-10 flex flex-col items-center justify-center gap-3">
+        <h1 className="main-text">별점이 없습니다!</h1>
+        <h2 className="main-text">첫 별점을 남겨주세요!</h2>
+        <DefaultButton>점수 입력</DefaultButton>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col gap-1 md:gap-3 relative w-3/4">
       <h1 className="main-text">위스키 궁합 점수</h1>
@@ -39,27 +48,27 @@ export default function GetRating({
         <StarInput
           id={111}
           ratingName="고기"
-          ratingscore={avgRating?.rating_meat}
+          ratingscore={avgRating.rating_meat}
         />
         <StarInput
           id={222}
           ratingName="회"
-          ratingscore={avgRating?.rating_sasimi}
+          ratingscore={avgRating.rating_sasimi}
         />
         <StarInput
           id={333}
           ratingName="치즈"
-          ratingscore={avgRating?.rating_cheeze}
+          ratingscore={avgRating.rating_cheeze}
         />
         <StarInput
           id={444}
           ratingName="초콜릿"
-          ratingscore={avgRating?.rating_chocolate}
+          ratingscore={avgRating.rating_chocolate}
         />
         <StarInput
           id={555}
           ratingName="마른 안주"
-          ratingscore={avgRating?.rating_dried_snack}
+          ratingscore={avgRating.rating_dried_snack}
         />
       </div>
       <div className="w-full flex justify-end py-5">
