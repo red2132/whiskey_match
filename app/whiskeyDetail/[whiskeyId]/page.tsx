@@ -18,7 +18,7 @@ export default async function Page({
         </button>
 
         <WhiskeyDetail whiskeyId={whiskeyId} />
-        <RatingDetail />
+        <RatingDetail whiskeyId={whiskeyId} />
       </div>
     </div>
   );

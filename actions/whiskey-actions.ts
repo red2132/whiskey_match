@@ -4,9 +4,6 @@ import { Database } from "@/types_db";
 import { createServerSupabaseClient } from "@/utils/supabase/server";
 
 export type WhiskeyRow = Database["public"]["Tables"]["whiskey"]["Row"];
-export type RatingRow = Database["public"]["Tables"]["rating"]["Row"];
-export type RatingRowInsert = Database["public"]["Tables"]["rating"]["Insert"];
-export type RatingRowUpdate = Database["public"]["Tables"]["rating"]["Update"];
 
 /** 추천 위스키 출력(랜덤 8개) */
 export async function getRecoWhiskies(): Promise<WhiskeyRow[]> {

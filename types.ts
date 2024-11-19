@@ -3,22 +3,10 @@ export interface ISizeLgProps {
   className?: string;
 }
 
-export interface WhiskeyOverview {
-  whiskeyId: string;
-  whiskeyName: string;
-  whiskeyThumbnailImage: string;
-}
-
-export interface WhiskeyInfo {
-  whiskeyId: string;
-  whiskeyType: string;
-  whiskeyName: string;
-  whiskeyVolume: string;
-  whiskeyAbv: string;
-  whiskeyNation: string;
-  whiskeyAroma: string;
-  whiskeyTaste: string;
-  whiskeyFinish: string;
-  whiskeyThumbnailImage: string;
-  whiskeyBgImage: string;
+export interface Ratings {
+  rating_cheeze: number;
+  rating_chocolate: number;
+  rating_dried_snack: number;
+  rating_meat: number;
+  rating_sasimi: number;
 }
