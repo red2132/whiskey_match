@@ -1,26 +1,28 @@
+"use client";
+import { getRecoWhiskies } from "@/actions/whiskey-actions";
 import WhiskeyItemList from "@/components/item/ItemList";
-import type { WhiskeyOverview } from "@/types";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
-async function GetRecoWhiskies(): Promise<JSX.Element> {
-  // api 호출
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/dummy/dummyWhiskeyOverviewList.json`,
-    {
-      cache: "no-store", // 캐시 비활성화
-    }
-  );
+export default function Home(): JSX.Element {
+  const query = useQuery({
+    queryKey: ["whiskey"],
+    queryFn: () => getRecoWhiskies(),
+    refetchOnMount: "always", // 컴포넌트가 마운트될 때마다 데이터 재요청
+  });
 
-  // 예외처리
-  if (!response.ok) {
-    return <div>오류가 발생했습니다! 새로고침해 주세요!</div>;
+  function RecoWhiskies(): JSX.Element {
+    if (query.isLoading) return <h1 className="main-text">로딩중...</h1>;
+    if (query.isError)
+      return <h1 className="main-text">오류가 발생했습니다.</h1>;
+    const recoWhiskies = Array.isArray(query.data) ? query.data : [];
+    return recoWhiskies.length > 0 ? (
+      <WhiskeyItemList whiskies={recoWhiskies} />
+    ) : (
+      <p>추천할 위스키가 없습니다.</p>
+    );
   }
 
-  // 데이터 세팅 및 위스키 리스트 리턴
-  const recoWhiskies: WhiskeyOverview[] | null = await response.json();
-  return <WhiskeyItemList whiskies={recoWhiskies} />;
-}
-export default function Home(): JSX.Element {
   return (
     <div className="flex flex-col items-center">
       <div className="relative w-full">
@@ -34,8 +36,10 @@ export default function Home(): JSX.Element {
       </div>
       <div className="flex flex-col items-center">
         <section className="mt-10 flex flex-col gap-6 ">
-          <h1 className="main-text">오늘의 추천 위스키</h1>
-          <GetRecoWhiskies />
+          {!query.isLoading && !query.isError && (
+            <h1 className="main-text">오늘의 추천 위스키</h1>
+          )}
+          <RecoWhiskies />
           <div className="w-fit"></div>
         </section>
       </div>

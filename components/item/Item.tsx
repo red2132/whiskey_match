@@ -6,7 +6,7 @@ export default function WhiskeyItem({
   whiskeyName,
   whiskeyThumbnailImage,
 }: {
-  whiskeyId: string;
+  whiskeyId: number;
   whiskeyName: string;
   whiskeyThumbnailImage: string;
 }): JSX.Element {

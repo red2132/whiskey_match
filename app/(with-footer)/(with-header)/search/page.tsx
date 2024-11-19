@@ -1,41 +1,40 @@
+"use client";
+import { getWhiskeyByName } from "@/actions/whiskey-actions";
 import WhiskeyItemList from "@/components/item/ItemList";
-import { WhiskeyOverview } from "@/types";
+import { useQuery } from "@tanstack/react-query";
 
-export default async function SearchPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ q: string }>;
-}): Promise<JSX.Element> {
-  const { q } = await searchParams;
+function SearchWhiskies({ query }: { query: string }): JSX.Element {
+  const { data: searchWhiskies = [], isLoading } = useQuery({
+    queryKey: ["whiskey", query],
+    queryFn: () => getWhiskeyByName(query),
+  });
 
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/dummy/dummyWhiskeyOverviewList.json`,
-    {
-      cache: "no-store", // 캐시 비활성화
-    }
-  );
-
-  // 예외처리
-  if (!response.ok) {
-    return <div>오류가 발생했습니다! 새로고침해 주세요!</div>;
+  if (isLoading) {
+    return <h1 className="main-text m-10">로딩중...</h1>;
   }
 
-  // 데이터 세팅 및 위스키 리스트 리턴
-  const allWhiskies: WhiskeyOverview[] = await response.json();
-
-  const filteredWhiskies = allWhiskies.filter((whiskey) =>
-    whiskey.whiskeyName.toLowerCase().includes(q.toLowerCase())
+  return (
+    <div>
+      <h1 className="main-text m-10">
+        '{query}' 검색 결과 {searchWhiskies?.length}건
+      </h1>
+      <WhiskeyItemList whiskies={searchWhiskies} />
+    </div>
   );
+}
+
+export default function SearchPage({
+  searchParams,
+}: {
+  searchParams: { q: string };
+}): JSX.Element {
+  const { q } = searchParams;
+
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col items-center">
         <section className="mt-10 flex flex-col gap-6 ">
-          <h1 className="main-text">
-            '{q}' 검색 결과 {filteredWhiskies.length}건
-          </h1>
-          <div className="w-fit">
-            <WhiskeyItemList whiskies={filteredWhiskies} />
-          </div>
+          <SearchWhiskies query={q} />
         </section>
       </div>
     </div>
