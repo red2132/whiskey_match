@@ -3,11 +3,12 @@ import { useCallback, useEffect, useState } from "react";
 interface StarRatingProps {
   rating: number;
   id: number;
+  editColor?: boolean;
 }
 
-function StarRating({ id, rating }: StarRatingProps) {
+function StarRating({ id, rating, editColor }: StarRatingProps) {
   const START_WIDTH_SIZE = 14;
-  const STAR_COLOR = "#ffcc00";
+  const STAR_COLOR = editColor ? "#f28e1c" : "#ffcc00";
   const EMPTY_STAR_COLOR = "#d9d9d9";
   const STAR_IDX_ARR = ["first", "second", "third", "fourth", "last"];
 

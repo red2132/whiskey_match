@@ -1,40 +1,76 @@
-"use client";
-
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import DefaultButton from "../DefaultButton";
 import StarInput from "../star/StarInput";
-import {
+import deleteRating, {
   getAverageRatingsByWhiskeyId,
-  IsMemberRating,
 } from "@/actions/rating-actions";
+import useIsEditingStore from "@/store/useIsEditingStore";
+import { useEffect, useState } from "react";
+import { memberRating } from "@/types";
+import useRatingStore from "@/store/useRatingStore";
 
 export default function GetRating({
   whiskeyId,
+  isRating,
 }: {
   whiskeyId: string;
+  isRating: memberRating | null;
 }): JSX.Element {
-  const { data: ratingInfo, isLoading } = useQuery({
-    queryKey: ["rating"],
+  // 화면 전환
+  const { isEditing, toggle } = useIsEditingStore();
+
+  // 별점 점수 변수 세팅
+  const {
+    setRatingMeat,
+    setRatingSasimi,
+    setRatingCheeze,
+    setRatingChocolate,
+    setRatingDriedSnack,
+  } = useRatingStore();
+
+  // 컴포넌트 강제 리렌더링을 위한 상태
+  const [key, setKey] = useState(Date.now()); // key를 추가하여 리렌더링을 강제
+
+  /** 평균 별점 점수 가져오기 */
+  const {
+    data: ratingInfo,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["rating", isEditing, key],
     queryFn: () => getAverageRatingsByWhiskeyId(whiskeyId),
   });
 
-  const { data: isRating } = useQuery({
-    queryKey: ["isRating"],
-    queryFn: () => IsMemberRating(whiskeyId, "happy1234"),
+  const avgRating = ratingInfo?.avgRating; // 평균 점수 정보
+  const ratingCount = ratingInfo?.ratingCount; // 점수 개수
+
+  const deleteRatingMutation = useMutation({
+    mutationFn: () => deleteRating(Number(isRating?.rating_id)),
+    onSuccess: () => {
+      setRatingMeat(0);
+      setRatingSasimi(0);
+      setRatingCheeze(0);
+      setRatingChocolate(0);
+      setRatingDriedSnack(0);
+      setKey(Date.now());
+    },
   });
 
-  const avgRating = ratingInfo?.avgRating;
-  const ratingCount = ratingInfo?.ratingCount;
+  useEffect(() => {
+    refetch(); // isEditing 변경 시 refetch 호출
+    setKey(Date.now()); // key 업데이트하여 리렌더링 강제
+  }, [isEditing]);
 
+  // 화면 렌더링
   if (isLoading) {
     return <h1 className="main-text m-10">로딩중...</h1>;
   }
   if (!avgRating) {
     return (
-      <div className="w-[605px] h-[207px] bg-[#f0f0f0] rounded-[10px] m-10 flex flex-col items-center justify-center gap-3">
+      <div className="w-72 h-[207px] md:w-[605px] bg-[#f0f0f0] rounded-[10px] m-10 flex flex-col items-center justify-center gap-3">
         <h1 className="main-text">별점이 없습니다!</h1>
         <h2 className="main-text">첫 별점을 남겨주세요!</h2>
-        <DefaultButton>점수 입력</DefaultButton>
+        <DefaultButton onClick={toggle}>점수 입력</DefaultButton>
       </div>
     );
   }
@@ -71,8 +107,21 @@ export default function GetRating({
           ratingscore={avgRating.rating_dried_snack}
         />
       </div>
-      <div className="w-full flex justify-end py-5">
-        <DefaultButton>{isRating ? "점수 수정" : "점수 입력"}</DefaultButton>
+      <div className="w-full flex justify-end py-5 gap-2">
+        <DefaultButton onClick={toggle}>
+          {isRating ? "점수 수정" : "점수 입력"}
+        </DefaultButton>
+        {isRating && (
+          <DefaultButton
+            className="delete-button-sm"
+            onClick={() => {
+              deleteRatingMutation.mutate();
+              setKey(Date.now());
+            }}
+          >
+            점수 삭제
+          </DefaultButton>
+        )}
       </div>
     </div>
   );

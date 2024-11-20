@@ -32,7 +32,7 @@ body {
     @apply rounded-lg h-12 w-80 bg-white border sm:border-2 border-primary_color border-solid;
   }
   .delete-button-sm {
-    @apply rounded-lg h-8 w-20 sm:h-12 sm:w-24 bg-delete_color border-none;
+    @apply rounded-lg h-8 w-20 md:h-12 md:w-24 bg-delete_color border-none;
   }
   .delete-button-lg {
     @apply rounded-lg h-12 w-52 bg-delete_color border-none;

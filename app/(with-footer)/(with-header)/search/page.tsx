@@ -16,7 +16,7 @@ function SearchWhiskies({ query }: { query: string }): JSX.Element {
   return (
     <div>
       <h1 className="main-text m-10">
-        '{query}' 검색 결과 {searchWhiskies?.length}건
+        " {query} " 검색 결과 {searchWhiskies?.length}건
       </h1>
       <WhiskeyItemList whiskies={searchWhiskies} />
     </div>

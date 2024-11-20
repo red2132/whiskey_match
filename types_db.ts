@@ -71,7 +71,7 @@ export type Database = {
           rating_cheeze?: number;
           rating_chocolate?: number;
           rating_dried_snack?: number;
-          rating_id?: number;
+          rating_id: number;
           rating_meat?: number;
           rating_sasimi?: number;
           whiskey_id?: number;
