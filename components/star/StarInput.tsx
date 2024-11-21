@@ -29,8 +29,10 @@ function StarInput({
 
   return (
     <div className="w-full h-10 md:h-20 bg-white rounded-3xl shadow flex flex-row items-center">
-      <div className="w-2/5 h-full bg-gradient-to-b to-gray-100 from-gray-100 via-white shadow ml-5 flex items-center justify-center">
-        <p className="text-sm md:text-2xl font-semibold">{ratingName}</p>
+      <div className="w-20 h-11 md:w-32 md:h-[86px] border-none bg-gradient-to-b from-gray-100 via-white to-gray-200 shadow ml-5 flex items-center justify-center">
+        <p className="text-sm md:text-2xl text-center border-none font-semibold">
+          {ratingName}
+        </p>
       </div>
       <div className="w-full flex justify-center items-center">
         <div className="relative w-fit">

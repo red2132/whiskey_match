@@ -44,9 +44,3 @@ body {
     @apply text-point_color text-sm md:text-lg text-center;
   }
 }
-
-@layer utilities {
-  .backdrop-custom {
-    @apply bg-black bg-opacity-90;
-  }
-}

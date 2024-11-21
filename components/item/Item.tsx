@@ -11,7 +11,7 @@ export default function WhiskeyItem({
   whiskeyThumbnailImage: string;
 }): JSX.Element {
   return (
-    <Link href={`/whiskeyDetail/${whiskeyId}`}>
+    <Link href={`/whiskeyDetail/${whiskeyId}`} scroll={false}>
       <div className="w-64 h-80 flex flex-col items-center gap-2">
         <div className="w-64 h-64 rounded-lg relative flex justify-center">
           <Image

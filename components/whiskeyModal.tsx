@@ -18,24 +18,33 @@ export default function WhiskeyModal({
       dialogRef.current?.showModal();
       // 등장 시 제일 상단에 위치하도록 스크롤 조정
       dialogRef.current?.scrollTo({
-        top: 0,
+        top: window.scrollY,
       });
     }
   }, []);
   return createPortal(
-    <dialog
-      className="relative overflow-auto mt-5 border-none backdrop-blur-sm backdrop-custom posit"
-      ref={dialogRef}
-      onClose={() => router.back()}
-      onClick={(e) => {
-        // 모달 배경 클릭 시 뒤로가기
-        if ((e.target as HTMLElement).nodeName === "DIALOG") {
+    <>
+      <div
+        className="fixed inset-0 bg-black/70"
+        onClick={(e) => {
+          e.stopPropagation(); // 이벤트 버블링 방지
           router.back();
-        }
-      }}
-    >
-      {children}
-    </dialog>,
+        }}
+      ></div>
+      <dialog
+        className="relative mt-5 border-none rounded-md"
+        ref={dialogRef}
+        onClose={() => router.back()}
+        onClick={(e) => {
+          // 모달 배경 클릭 시 뒤로가기
+          if ((e.target as HTMLElement).nodeName === "DIALOG") {
+            router.back();
+          }
+        }}
+      >
+        {children}
+      </dialog>
+    </>,
     document.getElementById("modal-root") as HTMLElement
   );
 }

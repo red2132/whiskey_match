@@ -85,7 +85,7 @@ export default function GetRating({
       <div className="flex justify-end pb-5 text-sm md:text-xl">
         <p>리뷰 {ratingCount}개</p>
       </div>
-      <div className="flex flex-col justify-center items-center gap-2 md:gap-3">
+      <div className="flex flex-col justify-center items-center gap-3 md:gap-4">
         <StarInput
           id={111}
           ratingName="고기"
@@ -115,7 +115,7 @@ export default function GetRating({
       {myRatingScore && (
         <div className="mt-10">
           <h1 className="main-text mb-5">내 위스키 페어링 점수</h1>
-          <div className="flex flex-col justify-center items-center gap-2 md:gap-3">
+          <div className="flex flex-col justify-center items-center gap-3 md:gap-4">
             <StarInput
               id={666}
               ratingName="고기"
