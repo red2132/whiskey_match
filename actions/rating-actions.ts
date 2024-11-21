@@ -41,7 +41,7 @@ export async function GetMemberRating(
 ): Promise<memberRating | null> {
   const supabase = await createServerSupabaseClient();
 
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("rating")
     .select(
       "rating_id, rating_meat, rating_sasimi, rating_cheeze, rating_chocolate, rating_dried_snack"
@@ -50,11 +50,8 @@ export async function GetMemberRating(
     .eq("whiskey_id", whiskey_id) // whiskey_id로 멤버 검색
     .single();
 
-  if (error) {
-    console.error("Error searching my rating", error.message);
-    throw new Error("Failed to search my rating");
-  }
-  return data;
+  // 별점정보가 없을 때 error 처리하면 없을 시에 화면 처리에 문제가 생겨 error 처리 생략
+  return data || null;
 }
 
 /** 내 별점 정보 입력 */

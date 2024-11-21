@@ -7,14 +7,13 @@ import GetRating from "./rating/GetRating";
 import { GetMemberRating } from "@/actions/rating-actions";
 import UpdateRating from "./rating/UpdateRating";
 import CreateRating from "./rating/CreateRating";
-import { memberRating } from "@/types";
 
 export default function GetRatingDetail({ whiskeyId }: { whiskeyId: string }) {
   const { isEditing, setIsEditing } = useIsEditingStore();
-
+  const [isDeleted, setDeleted] = useState(false);
   // 내 별점 점수 확인
-  const { data: myRatingScore } = useQuery({
-    queryKey: ["myRatingScore", isEditing],
+  const { data: myRatingScore, isSuccess } = useQuery({
+    queryKey: [isEditing, isDeleted],
     queryFn: () => GetMemberRating(whiskeyId, "happy1234"),
   });
 
@@ -25,11 +24,23 @@ export default function GetRatingDetail({ whiskeyId }: { whiskeyId: string }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (isSuccess) {
+      console.log("새로운 별점 데이터:", myRatingScore);
+    }
+  }, [isSuccess, myRatingScore]);
   if (!isEditing) {
-    return <GetRating whiskeyId={whiskeyId} isRating={myRatingScore || null} />;
+    return (
+      <GetRating
+        whiskeyId={whiskeyId}
+        myRatingScore={myRatingScore || null}
+        isDeleted={isDeleted}
+        setDeleted={setDeleted}
+      />
+    );
   } else {
     if (myRatingScore) {
-      return <UpdateRating isRating={myRatingScore} />;
+      return <UpdateRating myRatingScore={myRatingScore} />;
     } else {
       return <CreateRating memberId="happy1234" whiskeyId={whiskeyId} />;
     }

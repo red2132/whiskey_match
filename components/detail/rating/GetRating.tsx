@@ -11,13 +11,17 @@ import useRatingStore from "@/store/useRatingStore";
 
 export default function GetRating({
   whiskeyId,
-  isRating,
+  myRatingScore,
+  setDeleted,
+  isDeleted,
 }: {
   whiskeyId: string;
-  isRating: memberRating | null;
+  myRatingScore: memberRating | null;
+  setDeleted: Function;
+  isDeleted: boolean;
 }): JSX.Element {
   // 화면 전환
-  const { isEditing, toggle } = useIsEditingStore();
+  const { isEditing, setIsEditing, toggle } = useIsEditingStore();
 
   // 컴포넌트 강제 리렌더링을 위한 상태
   const [key, setKey] = useState(Date.now()); // key를 추가하여 리렌더링을 강제
@@ -45,7 +49,16 @@ export default function GetRating({
   const ratingCount = ratingInfo?.ratingCount; // 점수 개수
 
   const deleteRatingMutation = useMutation({
-    mutationFn: () => deleteRating(Number(isRating?.rating_id)),
+    mutationFn: () => deleteRating(Number(myRatingScore?.rating_id)),
+    onSuccess: () => {
+      setDeleted(!isDeleted);
+      setRatingMeat(0);
+      setRatingSasimi(0);
+      setRatingCheeze(0);
+      setRatingChocolate(0);
+      setRatingDriedSnack(0);
+      setKey(Date.now());
+    },
   });
 
   useEffect(() => {
@@ -68,6 +81,9 @@ export default function GetRating({
   }
   return (
     <div className="flex flex-col gap-1 md:gap-3 relative w-3/4">
+      <div>
+        {myRatingScore?.rating_id} {myRatingScore?.rating_chocolate}
+      </div>
       <h1 className="main-text">위스키 궁합 점수</h1>
       <div className="flex justify-end pb-5 text-sm md:text-xl">
         <p>리뷰 {ratingCount}개</p>
@@ -101,20 +117,13 @@ export default function GetRating({
       </div>
       <div className="w-full flex justify-end py-5 gap-2">
         <DefaultButton onClick={toggle}>
-          {isRating ? "점수 수정" : "점수 입력"}
+          {myRatingScore ? "점수 수정" : "점수 입력"}
         </DefaultButton>
-        {isRating && (
+        {myRatingScore && (
           <DefaultButton
             className="delete-button-sm"
             onClick={() => {
               deleteRatingMutation.mutate();
-              setKey(Date.now());
-              setRatingMeat(0);
-              setRatingSasimi(0);
-              setRatingCheeze(0);
-              setRatingChocolate(0);
-              setRatingDriedSnack(0);
-              setKey(Date.now());
             }}
           >
             점수 삭제

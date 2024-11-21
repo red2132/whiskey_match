@@ -10,9 +10,9 @@ import useIsEditingStore from "@/store/useIsEditingStore";
 import { memberRating } from "@/types";
 
 export default function UpdateRating({
-  isRating,
+  myRatingScore,
 }: {
-  isRating: memberRating;
+  myRatingScore: memberRating;
 }): JSX.Element {
   // 별점 점수 변수 세팅
   const {
@@ -31,7 +31,7 @@ export default function UpdateRating({
   const undateRatingMutation = useMutation({
     mutationFn: () =>
       updateRating({
-        rating_id: Number(isRating.rating_id),
+        rating_id: Number(myRatingScore.rating_id),
         rating_meat: ratingMeat,
         rating_sasimi: ratingSasimi,
         rating_cheeze: ratingCheeze,
@@ -44,19 +44,13 @@ export default function UpdateRating({
       setRatingCheeze(0);
       setRatingChocolate(0);
       setRatingDriedSnack(0);
-      setIsEditing(false);
+      toggle();
     },
   });
   // 화면 전환용 토글 함수
-  const { setIsEditing, toggle } = useIsEditingStore();
+  const { isEditing, toggle } = useIsEditingStore();
 
   useEffect(() => {
-    // rating이 있을 경우 점수 사전 세팅
-    setRatingMeat(isRating.rating_meat);
-    setRatingSasimi(isRating.rating_sasimi);
-    setRatingCheeze(isRating.rating_cheeze);
-    setRatingChocolate(isRating.rating_chocolate);
-    setRatingDriedSnack(isRating.rating_dried_snack);
     // 컴포넌트가 언마운트될 때 점수 초기화
     return () => {
       setRatingMeat(0);
@@ -66,6 +60,14 @@ export default function UpdateRating({
       setRatingDriedSnack(0);
     };
   }, []);
+  useEffect(() => {
+    console.log("myRatingScore", myRatingScore);
+    setRatingMeat(myRatingScore.rating_meat);
+    setRatingSasimi(myRatingScore.rating_sasimi);
+    setRatingCheeze(myRatingScore.rating_cheeze);
+    setRatingChocolate(myRatingScore.rating_chocolate);
+    setRatingDriedSnack(myRatingScore.rating_dried_snack);
+  }, [isEditing]);
 
   return (
     <div className="flex flex-col gap-1 md:gap-3 relative w-3/4">

@@ -30,7 +30,7 @@ export default function CreateRating({
   } = useRatingStore();
 
   // 화면 전환용 토글 함수
-  const { setIsEditing, toggle } = useIsEditingStore();
+  const { toggle } = useIsEditingStore();
 
   /** 새 별점 점수 등록 */
   const createRatingMutation = useMutation({
@@ -50,7 +50,7 @@ export default function CreateRating({
       setRatingCheeze(0);
       setRatingChocolate(0);
       setRatingDriedSnack(0);
-      setIsEditing(false);
+      toggle();
     },
   });
   useEffect(() => {
