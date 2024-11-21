@@ -1,10 +1,10 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import DefaultButton from "../DefaultButton";
+import DefaultButton from "../../DefaultButton";
 import { createRating } from "@/actions/rating-actions";
 import useRatingStore from "@/store/useRatingStore";
-import StarInputEdit from "../star/StarInputEdit";
+import StarInputEdit from "../../star/StarInputEdit";
 import useIsEditingStore from "@/store/useIsEditingStore";
 import { useEffect } from "react";
 

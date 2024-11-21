@@ -1,9 +1,9 @@
-import RatingDetail2 from "./RatingDetail2";
+import GetRatingDetail from "./GetRatingDetail";
 
 export default async function RatingDetail({
   whiskeyId,
 }: {
   whiskeyId: string;
 }): Promise<JSX.Element> {
-  return <RatingDetail2 whiskeyId={whiskeyId} />;
+  return <GetRatingDetail whiskeyId={whiskeyId} />;
 }

@@ -1,19 +1,20 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import useIsEditingStore from "@/store/useIsEditingStore";
-import GetRating from "./GetRating";
+import GetRating from "./rating/GetRating";
 import { GetMemberRating } from "@/actions/rating-actions";
-import UpdateRating from "./UpdateRating";
-import CreateRating from "./CreateRating";
+import UpdateRating from "./rating/UpdateRating";
+import CreateRating from "./rating/CreateRating";
+import { memberRating } from "@/types";
 
-export default function RatingDetail2({ whiskeyId }: { whiskeyId: string }) {
+export default function GetRatingDetail({ whiskeyId }: { whiskeyId: string }) {
   const { isEditing, setIsEditing } = useIsEditingStore();
 
   // 내 별점 점수 확인
-  const { data: isRating, refetch } = useQuery({
-    queryKey: ["isRating", isEditing],
+  const { data: myRatingScore } = useQuery({
+    queryKey: ["myRatingScore", isEditing],
     queryFn: () => GetMemberRating(whiskeyId, "happy1234"),
   });
 
@@ -24,15 +25,11 @@ export default function RatingDetail2({ whiskeyId }: { whiskeyId: string }) {
     };
   }, []);
 
-  useEffect(() => {
-    refetch;
-  }, [isEditing]);
-
   if (!isEditing) {
-    return <GetRating whiskeyId={whiskeyId} isRating={isRating || null} />;
+    return <GetRating whiskeyId={whiskeyId} isRating={myRatingScore || null} />;
   } else {
-    if (isRating) {
-      return <UpdateRating isRating={isRating} />;
+    if (myRatingScore) {
+      return <UpdateRating isRating={myRatingScore} />;
     } else {
       return <CreateRating memberId="happy1234" whiskeyId={whiskeyId} />;
     }

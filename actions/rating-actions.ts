@@ -47,13 +47,13 @@ export async function GetMemberRating(
       "rating_id, rating_meat, rating_sasimi, rating_cheeze, rating_chocolate, rating_dried_snack"
     )
     .eq("member_id", member_id) // member_id로 멤버 검색
-    .eq("whiskey_id", whiskey_id)
+    .eq("whiskey_id", whiskey_id) // whiskey_id로 멤버 검색
     .single();
 
-  if (!data) {
-    return null;
+  if (error) {
+    console.error("Error searching my rating", error.message);
+    throw new Error("Failed to search my rating");
   }
-
   return data;
 }
 
