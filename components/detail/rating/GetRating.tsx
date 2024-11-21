@@ -21,7 +21,7 @@ export default function GetRating({
   isDeleted: boolean;
 }): JSX.Element {
   // 화면 전환
-  const { isEditing, setIsEditing, toggle } = useIsEditingStore();
+  const { isEditing, toggle } = useIsEditingStore();
 
   // 컴포넌트 강제 리렌더링을 위한 상태
   const [key, setKey] = useState(Date.now()); // key를 추가하여 리렌더링을 강제
@@ -81,10 +81,7 @@ export default function GetRating({
   }
   return (
     <div className="flex flex-col gap-1 md:gap-3 relative w-3/4">
-      <div>
-        {myRatingScore?.rating_id} {myRatingScore?.rating_chocolate}
-      </div>
-      <h1 className="main-text">위스키 궁합 점수</h1>
+      <h1 className="main-text">위스키 페어링 점수</h1>
       <div className="flex justify-end pb-5 text-sm md:text-xl">
         <p>리뷰 {ratingCount}개</p>
       </div>
@@ -115,6 +112,38 @@ export default function GetRating({
           ratingscore={avgRating.rating_dried_snack}
         />
       </div>
+      {myRatingScore && (
+        <div className="mt-10">
+          <h1 className="main-text mb-5">내 위스키 페어링 점수</h1>
+          <div className="flex flex-col justify-center items-center gap-2 md:gap-3">
+            <StarInput
+              id={666}
+              ratingName="고기"
+              ratingscore={myRatingScore.rating_meat}
+            />
+            <StarInput
+              id={777}
+              ratingName="회"
+              ratingscore={myRatingScore.rating_sasimi}
+            />
+            <StarInput
+              id={888}
+              ratingName="치즈"
+              ratingscore={myRatingScore.rating_cheeze}
+            />
+            <StarInput
+              id={999}
+              ratingName="초콜릿"
+              ratingscore={myRatingScore.rating_chocolate}
+            />
+            <StarInput
+              id={1000}
+              ratingName="마른 안주"
+              ratingscore={myRatingScore.rating_dried_snack}
+            />
+          </div>
+        </div>
+      )}
       <div className="w-full flex justify-end py-5 gap-2">
         <DefaultButton onClick={toggle}>
           {myRatingScore ? "점수 수정" : "점수 입력"}

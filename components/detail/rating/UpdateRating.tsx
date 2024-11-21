@@ -48,7 +48,7 @@ export default function UpdateRating({
     },
   });
   // 화면 전환용 토글 함수
-  const { isEditing, toggle } = useIsEditingStore();
+  const { toggle } = useIsEditingStore();
 
   useEffect(() => {
     // 컴포넌트가 언마운트될 때 점수 초기화
@@ -61,17 +61,16 @@ export default function UpdateRating({
     };
   }, []);
   useEffect(() => {
-    console.log("myRatingScore", myRatingScore);
     setRatingMeat(myRatingScore.rating_meat);
     setRatingSasimi(myRatingScore.rating_sasimi);
     setRatingCheeze(myRatingScore.rating_cheeze);
     setRatingChocolate(myRatingScore.rating_chocolate);
     setRatingDriedSnack(myRatingScore.rating_dried_snack);
-  }, [isEditing]);
+  }, [myRatingScore]);
 
   return (
     <div className="flex flex-col gap-1 md:gap-3 relative w-3/4">
-      <h1 className="main-text">내 위스키 궁합 점수</h1>
+      <h1 className="main-text mb-3">내 위스키 페어링 점수</h1>
       <div className="flex flex-col justify-center items-center gap-2 md:gap-3">
         <StarInputEdit
           id={ratingMeat}

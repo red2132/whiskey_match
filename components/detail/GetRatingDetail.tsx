@@ -12,7 +12,7 @@ export default function GetRatingDetail({ whiskeyId }: { whiskeyId: string }) {
   const { isEditing, setIsEditing } = useIsEditingStore();
   const [isDeleted, setDeleted] = useState(false);
   // 내 별점 점수 확인
-  const { data: myRatingScore, isSuccess } = useQuery({
+  const { data: myRatingScore } = useQuery({
     queryKey: [isEditing, isDeleted],
     queryFn: () => GetMemberRating(whiskeyId, "happy1234"),
   });
@@ -24,11 +24,6 @@ export default function GetRatingDetail({ whiskeyId }: { whiskeyId: string }) {
     };
   }, []);
 
-  useEffect(() => {
-    if (isSuccess) {
-      console.log("새로운 별점 데이터:", myRatingScore);
-    }
-  }, [isSuccess, myRatingScore]);
   if (!isEditing) {
     return (
       <GetRating
