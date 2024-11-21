@@ -9,7 +9,7 @@ export default function GetWhiskeyDetail({
   whiskeyId: string;
 }): JSX.Element {
   const { data: whiskeyInfo, isLoading } = useQuery({
-    queryKey: ["whiskey"],
+    queryKey: ["whiskeyDetail"],
     queryFn: () => getWhiskeyById(whiskeyId),
   });
 
@@ -21,14 +21,14 @@ export default function GetWhiskeyDetail({
     <div className="w-full relative">
       <Image
         className="w-full h-72 md:h-[640px] brightness-50 object-fill"
-        src={whiskeyInfo?.whiskey_bg_image || "/images/404.png"}
+        src={whiskeyInfo?.whiskey_bg_image || "/images/no_image.png"}
         alt="위스키 배경 이미지"
         height={640}
         width={720}
       />
       <Image
         className="rounded-md w-[40%] h-[45%] absolute right-[7%] bottom-[10%] object-fill"
-        src={whiskeyInfo?.whiskey_thumbnail_image || "/images/404.png"}
+        src={whiskeyInfo?.whiskey_thumbnail_image || "/images/no_image.png"}
         alt="위스키 썸네일 이미지"
         height={250}
         width={250}

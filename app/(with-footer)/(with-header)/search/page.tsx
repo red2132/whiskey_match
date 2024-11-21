@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 function SearchWhiskies({ query }: { query: string }): JSX.Element {
   const { data: searchWhiskies = [], isLoading } = useQuery({
-    queryKey: ["whiskey", query],
+    queryKey: ["searchWhiskes", query],
     queryFn: () => getWhiskeyByName(query),
   });
 

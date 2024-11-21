@@ -10,8 +10,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="kr">
@@ -30,7 +32,11 @@ export default function RootLayout({
       </head>
       <ThemeProvider>
         <ReactQueryClientProvider>
-          <body>{children}</body>
+          <body>
+            {children}
+            {modal}
+            <div id="modal-root"></div>
+          </body>
         </ReactQueryClientProvider>
       </ThemeProvider>
     </html>

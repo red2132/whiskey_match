@@ -13,8 +13,12 @@ export async function getRecoWhiskies(): Promise<WhiskeyRow[]> {
     console.log(error);
     throw new Error("Failed to fetch whiskies");
   }
-
-  return data;
+  await console.log("dsdsdsd", data);
+  if (data.length > 0) {
+    return data;
+  } else {
+    return [];
+  }
 }
 
 /** 위스키 상세 검색 */
