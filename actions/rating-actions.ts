@@ -87,7 +87,7 @@ export async function updateRating(ratingInfo: RatingUpdate) {
 }
 
 /** 내 별점 점보 삭제 */
-export default async function deleteRating(ratingId: number) {
+export async function deleteRating(ratingId: number) {
   const supabase = await createServerSupabaseClient();
 
   const { error } = await supabase

@@ -3,12 +3,12 @@
 import { createServerSupabaseClient } from "@/utils/supabase/server";
 
 /** 로그인 유저 정보 가져오기 */
-export async function getUserId(): Promise<string | undefined> {
+export async function getUserId(): Promise<string> {
   const supabase = await createServerSupabaseClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  return user?.email?.split("@")?.[0];
+  return user?.email?.split("@")?.[0] || "";
 }
 
 /** 로그아웃 */

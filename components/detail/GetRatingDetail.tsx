@@ -7,14 +7,21 @@ import GetRating from "./rating/GetRating";
 import { GetMemberRating } from "@/actions/rating-actions";
 import UpdateRating from "./rating/UpdateRating";
 import CreateRating from "./rating/CreateRating";
+import { getUserId } from "@/actions/auth-actions";
 
 export default function GetRatingDetail({ whiskeyId }: { whiskeyId: string }) {
   const { isEditing, setIsEditing } = useIsEditingStore();
   const [isDeleted, setDeleted] = useState(false);
-  // 내 별점 점수 확인
+
+  const { data: memberId = "" } = useQuery({
+    queryKey: ["getMemberIdInDetail"],
+    queryFn: () => getUserId(),
+  });
+
   const { data: myRatingScore } = useQuery({
-    queryKey: [isEditing, isDeleted],
-    queryFn: () => GetMemberRating(whiskeyId, "happy1234"),
+    queryKey: [isEditing, isDeleted, memberId],
+    queryFn: () => GetMemberRating(whiskeyId, memberId),
+    enabled: !!memberId,
   });
 
   useEffect(() => {
@@ -31,6 +38,7 @@ export default function GetRatingDetail({ whiskeyId }: { whiskeyId: string }) {
         myRatingScore={myRatingScore || null}
         isDeleted={isDeleted}
         setDeleted={setDeleted}
+        memberId={memberId}
       />
     );
   } else {

@@ -1,7 +1,8 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import DefaultButton from "../../DefaultButton";
 import StarInput from "../../star/StarInput";
-import deleteRating, {
+import {
+  deleteRating,
   getAverageRatingsByWhiskeyId,
 } from "@/actions/rating-actions";
 import useIsEditingStore from "@/store/useIsEditingStore";
@@ -14,11 +15,13 @@ export default function GetRating({
   myRatingScore,
   setDeleted,
   isDeleted,
+  memberId,
 }: {
   whiskeyId: string;
   myRatingScore: memberRating | null;
   setDeleted: Function;
   isDeleted: boolean;
+  memberId: string;
 }): JSX.Element {
   // 화면 전환
   const { isEditing, toggle } = useIsEditingStore();
@@ -74,8 +77,15 @@ export default function GetRating({
     return (
       <div className="w-72 h-[207px] md:w-[605px] bg-[#f0f0f0] rounded-[10px] m-10 flex flex-col items-center justify-center gap-3">
         <h1 className="main-text">별점이 없습니다!</h1>
-        <h2 className="main-text">첫 별점을 남겨주세요!</h2>
-        <DefaultButton onClick={toggle}>점수 입력</DefaultButton>
+        {memberId && memberId !== "" ? (
+          <>
+            {" "}
+            <h2 className="main-text">첫 별점을 남겨주세요!</h2>
+            <DefaultButton onClick={toggle}>점수 입력</DefaultButton>
+          </>
+        ) : (
+          <h2 className="main-text">로그인 후, 별점을 남겨주세요!</h2>
+        )}
       </div>
     );
   }
@@ -85,7 +95,7 @@ export default function GetRating({
       <div className="flex justify-end pb-5 text-sm md:text-xl">
         <p>리뷰 {ratingCount}개</p>
       </div>
-      <div className="flex flex-col justify-center items-center gap-3 md:gap-4">
+      <div className="flex flex-col justify-center items-center gap-3 md:gap-4 mb-5">
         <StarInput
           id={111}
           ratingName="고기"
@@ -113,7 +123,7 @@ export default function GetRating({
         />
       </div>
       {myRatingScore && (
-        <div className="mt-10">
+        <div>
           <h1 className="main-text mb-5">내 위스키 페어링 점수</h1>
           <div className="flex flex-col justify-center items-center gap-3 md:gap-4">
             <StarInput
@@ -144,21 +154,23 @@ export default function GetRating({
           </div>
         </div>
       )}
-      <div className="w-full flex justify-end py-5 gap-2">
-        <DefaultButton onClick={toggle}>
-          {myRatingScore ? "점수 수정" : "점수 입력"}
-        </DefaultButton>
-        {myRatingScore && (
-          <DefaultButton
-            className="delete-button-sm"
-            onClick={() => {
-              deleteRatingMutation.mutate();
-            }}
-          >
-            점수 삭제
+      {memberId && memberId !== "" && (
+        <div className="w-full flex justify-end py-5 gap-2">
+          <DefaultButton onClick={toggle}>
+            {myRatingScore ? "점수 수정" : "점수 입력"}
           </DefaultButton>
-        )}
-      </div>
+          {myRatingScore && (
+            <DefaultButton
+              className="delete-button-sm"
+              onClick={() => {
+                deleteRatingMutation.mutate();
+              }}
+            >
+              점수 삭제
+            </DefaultButton>
+          )}
+        </div>
+      )}
     </div>
   );
 }

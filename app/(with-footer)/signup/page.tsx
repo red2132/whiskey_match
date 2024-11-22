@@ -20,12 +20,13 @@ export default function SignupPage(): JSX.Element {
         email,
         password,
       });
+      if (error) {
+        alert(error.message);
+        return;
+      }
       if (data) {
         await alert("회원가입에 성공했습니다!");
         await router.push("/");
-      }
-      if (error) {
-        alert(error.message);
       }
     },
   });

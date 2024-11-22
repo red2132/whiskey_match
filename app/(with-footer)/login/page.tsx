@@ -68,7 +68,10 @@ export default function LoginPage(): JSX.Element {
               Login
             </DefaultButton>
           </div>
-
+          <div className="text-center">
+            <p>test email: happy1234@gmail.com</p>
+            <p>test password: happy1234</p>
+          </div>
           <div className="text-center text-black text-sm md:text-base">
             <Link href={`/signup`}>회원가입</Link>
           </div>
