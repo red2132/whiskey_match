@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "whiskey match 위스키 상세 페이지",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   modal,
 }: Readonly<{

@@ -5,10 +5,22 @@ import DefaultButton from "./DefaultButton";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { getUserId, logout } from "@/actions/auth-actions";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 export default function Header(): JSX.Element {
   const [search, setSearch] = useState(""); // 검색어
   const router = useRouter(); // 라우터
+
+  const { data: memberId } = useQuery({
+    queryKey: ["getMemberIdInHeader"],
+    queryFn: () => getUserId(),
+  });
+
+  const logoutMutation = useMutation({
+    mutationFn: () => logout(),
+    onSuccess: () => window.location.reload(),
+  });
 
   // 검색어 세팅
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,12 +65,24 @@ export default function Header(): JSX.Element {
             </button>
           </div>
           <div className="flex flex-row gap-3 items-center">
-            <div className="h-7 text-center flex justify-center items-end">
-              홍길동 님
-            </div>
-            <DefaultButton>
-              <Link href="/login">Login</Link>
-            </DefaultButton>
+            {memberId ? (
+              <>
+                <div className="h-7 text-center flex justify-center items-end">
+                  {memberId} 님
+                </div>
+                <DefaultButton
+                  onClick={() => {
+                    logoutMutation.mutate();
+                  }}
+                >
+                  Logout
+                </DefaultButton>
+              </>
+            ) : (
+              <DefaultButton>
+                <Link href="/login">Login</Link>
+              </DefaultButton>
+            )}
           </div>
         </div>
       </div>

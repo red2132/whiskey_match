@@ -1,8 +1,34 @@
+"use client";
+
 import DefaultButton from "@/components/DefaultButton";
+import { createBrowserSupabaseClient } from "@/utils/supabase/client";
+import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function SignupPage(): JSX.Element {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const supabase = createBrowserSupabaseClient();
+  const router = useRouter();
+  const signupMutaion = useMutation({
+    mutationFn: async () => {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+      if (data) {
+        await alert("회원가입에 성공했습니다!");
+        await router.push("/");
+      }
+      if (error) {
+        alert(error.message);
+      }
+    },
+  });
   return (
     <div className="flex flex-row justify-center">
       <div className="my-20 w-80 h-auto md:w-[450px] md:h-[600px] rounded-sm shadow-xl flex flex-col items-center p-6 md:p-0">
@@ -20,15 +46,24 @@ export default function SignupPage(): JSX.Element {
           <div className="flex flex-col gap-4 items-center">
             <input
               className="w-full max-w-xs md:w-80 h-10 bg-gray-100 border border-gray-300 p-2 rounded-md"
-              placeholder="아이디"
+              placeholder="이메일"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               className="w-full max-w-xs md:w-80 h-10 bg-gray-100 border border-gray-300 p-2 rounded-md"
               placeholder="비밀번호"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="flex flex-row gap-4 mt-4 justify-center">
-            <DefaultButton className="default-button-sm-signup">
+            <DefaultButton
+              className="default-button-sm-signup"
+              onClick={() => {
+                signupMutaion.mutate();
+              }}
+            >
               가입하기
             </DefaultButton>
             <DefaultButton className="outline-button-sm-signup">
