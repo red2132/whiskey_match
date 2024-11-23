@@ -43,7 +43,9 @@ export async function getRecoWhiskies(): Promise<WhiskeyRow[]> {
   return data;
 }
 ```
-
+  
+또한 회원가입할 경우 자동으로 테이블에 회원정보가 추가되도록 supabase에 트리거를 만들어 놓았다.
+![image](https://github.com/user-attachments/assets/d6613d11-3f79-40a1-a1c2-1f969746afb1)  
 ### 기능 개발
 기능은 크게 검색&위스키 리스트 및 상세정보 출력 / 리뷰 관련 curd / 로그인& 회원가입으로 이루어져 있다. 
 
