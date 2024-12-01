@@ -158,7 +158,7 @@ export default function GetRating({
           <h1 className="text-primary_color text-md md:text-xl font-bold">
             로그인해 주세요!
           </h1>
-          <h2 className="text-primary_color text-sm md:text-lg">
+          <h2 className="text-primary_color text-[11px] md:text-lg">
             로그인 하시면 내 별점을 등록하거나 수정할 수 있습니다!
           </h2>
         </div>
