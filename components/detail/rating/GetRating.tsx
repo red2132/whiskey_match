@@ -159,7 +159,10 @@ export default function GetRating({
             로그인해 주세요!
           </h1>
           <h2 className="text-primary_color text-[11px] md:text-lg">
-            로그인 하시면 내 별점을 등록하거나 수정할 수 있습니다!
+            로그인 하시면 내 별점을 등록하거나
+          </h2>
+          <h2 className="text-primary_color text-[11px] md:text-lg">
+            수정할 수 있습니다!
           </h2>
         </div>
       )}
