@@ -45,7 +45,7 @@ export default function GetRatingDetail({ whiskeyId }: { whiskeyId: string }) {
     if (myRatingScore) {
       return <UpdateRating myRatingScore={myRatingScore} />;
     } else {
-      return <CreateRating memberId="happy1234" whiskeyId={whiskeyId} />;
+      return <CreateRating memberId={memberId} whiskeyId={whiskeyId} />;
     }
   }
 }

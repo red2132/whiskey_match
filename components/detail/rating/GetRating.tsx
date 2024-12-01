@@ -122,7 +122,7 @@ export default function GetRating({
           ratingscore={avgRating.rating_dried_snack}
         />
       </div>
-      {myRatingScore && (
+      {myRatingScore ? (
         <div>
           <h1 className="main-text mb-5">내 위스키 페어링 점수</h1>
           <div className="flex flex-col justify-center items-center gap-3 md:gap-4">
@@ -153,6 +153,8 @@ export default function GetRating({
             />
           </div>
         </div>
+      ) : (
+        <div>로그인 후, 별점을 입력하거나 확인하세요!</div>
       )}
       {memberId && memberId !== "" && (
         <div className="w-full flex justify-end py-5 gap-2">
