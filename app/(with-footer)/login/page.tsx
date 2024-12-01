@@ -22,7 +22,7 @@ export default function LoginPage() {
             <p>test email: happy1234@gmail.com</p>
             <p>test password: happy1234</p>
           </div>
-          <div className="text-center text-black text-sm md:text-base">
+          <div className="text-center text-black text-sm md:text-base underline">
             <Link href={`/signup`}>회원가입</Link>
           </div>
         </div>

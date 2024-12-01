@@ -154,7 +154,12 @@ export default function GetRating({
           </div>
         </div>
       ) : (
-        <div>로그인 후, 별점을 입력하거나 확인하세요!</div>
+        <div className="w-72 h-[207px] md:w-[605px] bg-[#f0f0f0] rounded-[10px] m-10 flex flex-col items-center justify-center gap-3">
+          <h1 className="main-text">로그인해 주세요!</h1>
+          <h2 className="main-text">
+            로그인 하시면 내 별점을 등록하거나 수정할 수 있습니다!
+          </h2>
+        </div>
       )}
       {memberId && memberId !== "" && (
         <div className="w-full flex justify-end py-5 gap-2">
