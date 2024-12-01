@@ -154,9 +154,11 @@ export default function GetRating({
           </div>
         </div>
       ) : (
-        <div className="w-72 h-[207px] md:w-[605px] bg-[#f0f0f0] rounded-[10px] m-10 flex flex-col items-center justify-center gap-3">
-          <h1 className="main-text">로그인해 주세요!</h1>
-          <h2 className="main-text">
+        <div className="w-full h-40 bg-[#f0f0f0] rounded-[10px] m-10 flex flex-col items-center justify-center gap-3">
+          <h1 className="text-primary_color text-md md:text-xl font-bold">
+            로그인해 주세요!
+          </h1>
+          <h2 className="text-primary_color text-md md:text-xl">
             로그인 하시면 내 별점을 등록하거나 수정할 수 있습니다!
           </h2>
         </div>
