@@ -19,7 +19,7 @@ framework: next.js 14, tailwind, react.js 18
 </div>  
 
 [피그마 링크](https://www.figma.com/design/FlpKf4rxa1umPBbXXU8Wz5/%EC%A3%BC%EB%A5%98-%ED%8E%98%EC%96%B4%EB%A7%81-%EC%82%AC%EC%9D%B4%ED%8A%B8?m=auto&t=Rl0jrkCIbLUVYsjL-6)  
-figma를 이용해 UIUX를 개발했다. 모바일에서도 정상적으로 보이기 위해 작은 화면용도 따로 디자인했다.
+figma를 이용해 UIUX를 개발했다. 모바일에서도 정상적으로 보이기 위해 작은 화면용도 따로 디자인했다.  
 
 
 ### API 명세서 작성
