@@ -1,4 +1,4 @@
-# Whiskey Match    
+# Whiskey Match      
 위스키 안주 별점 평가 사이트.   
 [사이트 링크](whiskey-match.vercel.app)
 
