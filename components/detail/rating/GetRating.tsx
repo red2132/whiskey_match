@@ -122,50 +122,64 @@ export default function GetRating({
           ratingscore={avgRating.rating_dried_snack}
         />
       </div>
-      {myRatingScore ? (
-        <div>
-          <h1 className="main-text mb-5">내 위스키 페어링 점수</h1>
-          <div className="flex flex-col justify-center items-center gap-3 md:gap-4">
-            <StarInput
-              id={666}
-              ratingName="고기"
-              ratingscore={myRatingScore.rating_meat}
-            />
-            <StarInput
-              id={777}
-              ratingName="회"
-              ratingscore={myRatingScore.rating_sasimi}
-            />
-            <StarInput
-              id={888}
-              ratingName="치즈"
-              ratingscore={myRatingScore.rating_cheeze}
-            />
-            <StarInput
-              id={999}
-              ratingName="초콜릿"
-              ratingscore={myRatingScore.rating_chocolate}
-            />
-            <StarInput
-              id={1000}
-              ratingName="마른 안주"
-              ratingscore={myRatingScore.rating_dried_snack}
-            />
+      {
+        // 로그인 여부 확인
+        memberId && memberId !== "" ? (
+          myRatingScore ? (
+            // 내 위스키 점수가 있을 경우
+            <div>
+              <h1 className="main-text mb-5">내 위스키 페어링 점수</h1>
+              <div className="flex flex-col justify-center items-center gap-3 md:gap-4">
+                <StarInput
+                  id={666}
+                  ratingName="고기"
+                  ratingscore={myRatingScore.rating_meat}
+                />
+                <StarInput
+                  id={777}
+                  ratingName="회"
+                  ratingscore={myRatingScore.rating_sasimi}
+                />
+                <StarInput
+                  id={888}
+                  ratingName="치즈"
+                  ratingscore={myRatingScore.rating_cheeze}
+                />
+                <StarInput
+                  id={999}
+                  ratingName="초콜릿"
+                  ratingscore={myRatingScore.rating_chocolate}
+                />
+                <StarInput
+                  id={1000}
+                  ratingName="마른 안주"
+                  ratingscore={myRatingScore.rating_dried_snack}
+                />
+              </div>
+            </div>
+          ) : (
+            // 내 위스키 점수가 없을 경우
+            <div className="h-28 md:h-40 bg-[#f0f0f0] rounded-[10px] m-10 flex flex-col items-center justify-center gap-3">
+              <h2 className="text-primary_color text-[11px] md:text-lg">
+                내 점수를 입력해 주세요!
+              </h2>
+            </div>
+          )
+        ) : (
+          // 로그인이 안 되어 있을 경우
+          <div className="h-28 md:h-40 bg-[#f0f0f0] rounded-[10px] m-10 flex flex-col items-center justify-center gap-3">
+            <h1 className="text-primary_color text-md md:text-xl font-bold">
+              로그인해 주세요!
+            </h1>
+            <h2 className="text-primary_color text-[11px] md:text-lg">
+              로그인 하시면 내 별점을 등록하거나
+            </h2>
+            <h2 className="text-primary_color text-[11px] md:text-lg">
+              수정할 수 있습니다!
+            </h2>
           </div>
-        </div>
-      ) : (
-        <div className="h-28 md:h-40 bg-[#f0f0f0] rounded-[10px] m-10 flex flex-col items-center justify-center gap-3">
-          <h1 className="text-primary_color text-md md:text-xl font-bold">
-            로그인해 주세요!
-          </h1>
-          <h2 className="text-primary_color text-[11px] md:text-lg">
-            로그인 하시면 내 별점을 등록하거나
-          </h2>
-          <h2 className="text-primary_color text-[11px] md:text-lg">
-            수정할 수 있습니다!
-          </h2>
-        </div>
-      )}
+        )
+      }
       {memberId && memberId !== "" && (
         <div className="w-full flex justify-end py-5 gap-2">
           <DefaultButton onClick={toggle}>
